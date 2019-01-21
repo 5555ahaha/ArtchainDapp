@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>ArtChain Admin Test Panel</title>
+  </head>
+  <body>
+    <div class="container-fluid">
+       <div class="row" style="background: #01ad7333">
+         <div class="col-md-3"><h1>ArtChain Test Panel</h1></div>
+         <div class="col-md-3"><button type="button" class="btn btn-info btn-lg" id="new_participant_btn">New Participant</button></div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+         <div class="col-md-12">
+        <h2> Operas & Bids List </h2>
+        <table class="table" id="login">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Owner</th>
+                <th scope="col">ETH Price</th>
+                <th scope="col">Hash/Contract</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+            </tbody>
+          </table>
+      </div>
+      <div class="col-md-12">
+        <div class="col border">
+          <h3>Basic Artist</h3>
+          <table class="table login" id="BasicArtist">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Surname</th>
+                <th scope="col">ETH address</th>
+                <th scope="col">Balance</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+            </tbody>
+          </table>
+        </div>
+        <div class="col border">
+          <h3>Famous Artist</h3>
+          <table class="table login" id="ComplexArtist">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Surname</th>
+                <th scope="col">ETH address</th>
+                <th scope="col">Balance</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+            </tbody>
+          </table>
+        </div>
+        <div class="col border">
+          <h3>Gallery</h3> 
+          <table class="table login" id="Gallery">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Surname</th>
+                <th scope="col">ETH address</th>
+                <th scope="col">Balance</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+            </tbody>
+          </table>
+        </div>
+        <div class="col border">
+          <h3>Privates</h3>
+          <table class="table login" id="Private">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Surname</th>
+                <th scope="col">ETH address</th>
+                <th scope="col">Balance</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+            </tbody>
+          </table>
+        </div>
+        <div class="col border">
+          <h3>Auction House</h3> 
+          <table class="table login" id="Asta">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Surname</th>
+                <th scope="col">ETH address</th>
+                <th scope="col">Balance</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col"><h3>Blockchain</h3></div>
+        <div class="row" id="blocks">
+          
+        </div>
+      </div>
+    </div>
+  </div>
+        <!-- Modal Insert-->
+      <div class="modal fade" id="new_participant" role="dialog">
+        <div class="modal-dialog">
+        
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Insert Participant</h4>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group row">
+                  <label class="col-sm-2 col-form-label">ID</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="user_id">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-2 col-form-label">Name</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="user_name">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-2 col-form-label">Surname</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="user_surname">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-2 col-form-label">ETH Address</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="user_eth_address" value="">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-10">
+                    <div class="dropdown">
+                      <select class="custom-select" id="participant_list">
+                        <option selected>Choose Participant</option>
+                        <option value="BasicArtist">BasicArtist</option>
+                        <option value="ComplexArtist">FamousArtist</option>
+                        <option value="Gallery">Gallery</option>
+                        <option value="Private">Private</option>
+                        <option value="Asta">Auction House</option>
+                      </select>                
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-10">
+                    <button type="button" class="btn btn-info btn-lg" id="participsnt_upload">Upload Participant</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>    
+        </div>
+      </div>
+              <!-- Modal Opera-->
+      <div class="modal fade" id="opera_ins" role="dialog">
+        <div class="modal-dialog">
+        
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Upload Opera</h4>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group row">
+                  <label class="col-sm-2 col-form-label">ID</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="id_opera">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-2 col-form-label">Price ETH</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="price">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-2 col-form-label">hash</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="hash">
+                  </div>
+                </div>
+                <button type="button" class="btn btn-info btn-lg" id="opera_upload">Upload Opera</button>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>    
+        </div>
+      </div>
+               <!-- Modal Opera-->
+      <div class="modal fade" id="offer" role="dialog">
+        <div class="modal-dialog">
+        
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">New Bid</h4>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group row">
+                  <select class="custom-select" id="opera_list">
+                    <option selected>Choose Opera</option>
+                  </select>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-2 col-form-label">Bid ID</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="bid_id">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-2 col-form-label">Price</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="bid_eth">
+                  </div>
+                </div>
+                <button type="button" class="btn btn-info btn-lg" id="create_bid">Create Bid</button>
+              </form>
+            </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>    
+        </div>
+      </div>
+
+      <div class="modal fade" id="spinner" role="dialog">
+        <div class="modal-dialog">
+        
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-body spinner-wrap">
+              <br><br><br><br>
+              <div class="spinner">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+
+            </div>
+           <h3> Generating smart-contract<br> please wait...</h3>   
+            </div>
+          </div>    
+        </div>
+      </div>
+      <div id="box" style="display:none;"> </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="lib/metamask.js"></script>
+    <script src="lib/scripts.js"></script>
+    <script type="text/javascript">
+      //var api_key="OA3m4lMBJLCphGn9HL8v2SBWbBvdiHCKTcPERBRGsVTwessqXA5qzLDDSGd7hFI4";
+      $(document).ready(function(){
+
+        refresh();
+
+       $("#new_participant_btn").click(function(e){
+        $("#new_participant").modal();
+          var user = new Object();
+          var method;
+          $("input[name=user_eth_address]").attr("value", web3.currentProvider.selectedAddress);
+           $("#participant_list").change(function(){
+                  method=$(this).children("option:selected").val();
+                  user.$class = "org.nexid.artchain."+ method;
+                  alert(method)
+              });
+          $("#participsnt_upload").click(function(e){
+              user.userId = $("input[name=user_id]").val();
+              user.firstName = $("input[name=user_name]").val();
+              user.lastName = $("input[name=user_surname]").val();
+              user.addressETH = $("input[name=user_eth_address]").val();
+              var json = JSON.stringify(user);
+              console.log(json)
+              postUser(method, json);
+              $("#new_participant").modal("toggle");
+          });
+       });
+
+        $(document).on('click', '.newopera', function(e) {
+          $("#opera_ins").modal();
+          var opera = new Object();
+           $("#opera_upload").click(function(){
+              opera.$class = "org.nexid.artchain.Opera";
+              opera.assetId = $("input[name=id_opera]").val();
+              opera.owner = "resource:org.nexid.artchain.Artist#"+e.target.id;
+              opera.priceEth = $("input[name=price]").val();
+              opera.hash = $("input[name=hash]").val();
+              var json = JSON.stringify(opera);
+              postOpera(json);
+              $("#opera_ins").modal("toggle");
+           });
+        });
+       
+       $("table.login").click(function(e){
+           var account = $(e.target).text();
+           var kind = $(this).attr('id');
+          getOperasByArtist(account, kind);
+          getOffersByOwner(account, kind);
+       });
+
+       $(document).on('click', '.bid', function(e) {
+          $("#offer").modal();
+          getAllOperas();
+          var offer = new Object(); 
+          $("#opera_list").change(function(){
+                  offer.asset = $(this).children("option:selected").val();
+              });
+          offer.owner = "resource:org.nexid.artchain.User#"+e.target.id;        
+          $("#create_bid").click(function(e){
+              offer.$class = "org.nexid.artchain.Offer";
+              offer.assetId = $("input[name=bid_id]").val();
+              offer.priceEth = $("input[name=bid_eth]").val();
+              $("#offer").modal("toggle");
+              console.log(offer);
+              newBid(offer, web3.currentProvider.selectedAddress);
+          });
+          
+          
+       });
+
+        $(document).on('click', '.send', function(e) {
+          var propose = new Object();
+          propose.$class="org.nexid.artchain.Propose"
+          propose.asset= "resource:org.nexid.artchain.Offer#"+$(this).parent().parent().find('th').text();
+          var opera =  $(this).parent().parent().find('td:eq(3)').text();
+          $.when(getOperaById(opera)).done(propose, function(opera){
+            console.log(opera[0])
+            propose.newOwner=opera[0].owner;
+            var json = JSON.stringify(propose);
+            console.log(json);
+            SendBid(json)
+          });
+        });
+
+        $(document).on('click', '.trade', function(e) {
+          var trade = new Object();
+          trade.$class="org.nexid.artchain.Trade"
+          trade.offer= "resource:org.nexid.artchain.Offer#"+$(this).parent().parent().find('th').text();
+          trade.asset="resource:org.nexid.artchain.Opera#"+$(this).parent().parent().parent().parent().find('th:eq(0)').text();
+          trade.newOwner="resource:org.nexid.artchain.User#"+$(this).parent().parent().find('td:eq(1)').text();
+          var json = JSON.stringify(trade);
+          AcceptBid(json)
+        });
+      });
+    </script>
+  </body>
+</html>
